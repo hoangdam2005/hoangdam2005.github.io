@@ -57,8 +57,10 @@ main {
 /* portfolio styles */
 #interests {
     border: 4px silver ridge;
-    padding: 8px;
+    padding: 5px;
+    width: 300px;
 }
 h2, h3 {
     margin: 0px;
 }
+
