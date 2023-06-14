@@ -54,8 +54,8 @@
 
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX,newPositionY) {
-				box.css("left", newPositionX);
-				box.css("right", newPositionY);
+				box.css('left', newPositionX);
+				box.css('top', newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -71,8 +71,11 @@
 			var positionX=0;
 			var Points=0;
 			var Speed=10;
-			var randomNumb=Math.random()*boardWidth;
-			
+			var randomNumbX=Math.random()*boardWidth;
+			var positionY=0;
+			var boardHeight = jQuery(window).height(); 
+		    var SpeedY=20;
+			var randomNumbY=Math.random ()*boardHeight;
 
 
 			
@@ -86,11 +89,15 @@
 			*/
 			//We want to increase function by 10
 			function update() {
-				moveBoxTo (positionX);
+				moveBoxTo (positionX,positionY);
 				positionX=positionX + Speed;
+				positionY=positionY+SpeedY;
 				// II stands for OR; && stands for AND
 				if (positionX > boardWidth || positionX <0) {
 					Speed=Speed*-1;
+				}
+				if (positionY >boardHeight || positionY<0) {
+					SpeedY=SpeedY*-1;
 				}
                
 			};
@@ -101,7 +108,8 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX=randomNumb;
+				positionX=randomNumbX;
+				positionY=randomNumbY;
 				changeBoxText(Points);
 				//Add 1 to points
 				Points=Points+1;
@@ -110,9 +118,15 @@
 				} else if (Speed < 0) {
 					Speed=Speed-3
 				}
-				if (Points%3 === 0) {
-
+				if (SpeedY >0) {
+					SpeedY=SpeedY+3
+				} else if (SpeedY <0) {
+					SpeedY=SpeedY+3
 				}
+
+		
+				
+
 
 				
 				
