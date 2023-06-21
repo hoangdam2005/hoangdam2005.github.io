@@ -22,23 +22,22 @@ var init = function (window) {
         // TODO 1 : Declare and initialize our variables
         var circle;
         var circles= [];
-        var rightEdge = circle.x + circle.radius;
-       
+        
 
         // TODO 2 : Create a function that draws a circle 
         function drawCircle () {
             circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-            physikz.addRandomVelocity(circle, canvas);
+            physikz.addRandomVelocity (circle, canvas);
             view.addChild(circle);
             circles.push(circle);
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
+       var loopsCompleted = 0;
+       while (loopsCompleted <100) {
         drawCircle ();
-        drawCircle ();
-        drawCircle ();
-        drawCircle ();
-        drawCircle ();
+        loopsCompleted++
+       }
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
         ////////////////////////////////////////////////////////////
@@ -78,26 +77,29 @@ var init = function (window) {
         */
         game.checkCirclePosition = function(circle) {
 
-            // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-            if ( circle.x > canvas.width) {
-                circle.x = 0;
-            } 
-            // if circle gone past left side then put it right
-            if (circle.x < 0) {
-                circle.x = canvas.width
-            }
-            // if circle gone past down then put it up
-            if (circle.y > canvas.height) {
-                circle.y = 0
-            }
-            // if circle gone past up then put it down
-            if (circle.y < 0) {
-                circle.y = canvas.height
-            }
            
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
+             // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
+             var rightEdge = circle.x + circle.radius;
+             var leftEdge = circle.x-circle.radius;
+             var bottomEdge = circle.y + circle.radius;
+             var topEdge = circle.y-circle.radius;
+             if ( rightEdge > canvas.width) {
+                 circle.x = 0;
+             } 
+             // if circle gone past left side then put it right
+             if (leftEdge < 0) {
+                 circle.x = canvas.width
+             }
+             // if circle gone past down then put it up
+             if (bottomEdge > canvas.height) {
+                 circle.y = 0
+             }
+             // if circle gone past up then put it down
+             if (topEdge < 0) {
+                 circle.y = canvas.height
+             }
 
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
