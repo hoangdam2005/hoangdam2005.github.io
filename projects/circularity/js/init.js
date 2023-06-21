@@ -81,23 +81,19 @@ var init = function (window) {
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
              // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-             var rightEdge = circle.x + circle.radius;
-             var leftEdge = circle.x-circle.radius;
-             var bottomEdge = circle.y + circle.radius;
-             var topEdge = circle.y-circle.radius;
-             if ( rightEdge > canvas.width) {
+             if ( circle.x > canvas.width) {
                  circle.x = 0;
              } 
              // if circle gone past left side then put it right
-             if (leftEdge < 0) {
-                 circle.x = canvas.width
+             if (circle.x < 0) {
+                circle.x = canvas.width;
              }
              // if circle gone past down then put it up
-             if (bottomEdge > canvas.height) {
+             if (circle.y > canvas.height) {
                  circle.y = 0
              }
              // if circle gone past up then put it down
-             if (topEdge < 0) {
+             if (circle.y < 0) {
                  circle.y = canvas.height
              }
 
