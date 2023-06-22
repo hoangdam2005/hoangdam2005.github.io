@@ -47,10 +47,10 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-       
+        // Deleted hard coded info to remove repetition
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-     
+        // Deleted hard coded info to remove repetition
 
 
             // TODO 9 : Iterate over the array
